@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortest Path UNIB - Search Mode</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+
+            <div class="logo-box">
+                <h1>UNIB MAP</h1>
+
+            </div>
+
+            <div class="menu">
+                <button class="menu-btn active" id="btnRute">Pencarian Rute</button>
+                <button class="menu-btn" id="btnDaftar">Daftar Gedung</button>
+            </div>
+
+            <div class="algoritma-box" id="modeTransportasiBox" style="margin-top: 15px; margin-bottom: 15px;">
+                <h2 style="font-weight: bold; font-size: 18px; color: #1e293b; display: block; margin-bottom: 5px;">Moda Transportasi:</h2>
+                <select id="transportModeSelect" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                    <option value="walk">Jalan Kaki</option>
+                    <option value="bike">Sepeda</option>
+                    <option value="car">Motor atau Mobil</option>
+                </select>
+                <select id="algorithmSelect" style="display: none;"><option value="dijkstra">Dijkstra</option></select>
+            </div>
+
+            <div id="sectionRute">
+                <h2 style="font-weight: bold; font-size: 18px; color: #1e293b; display: block; margin-bottom: 0px;">Telusuri Rute:</h2>
+                <div class="search-container" style="margin-top: 15px; margin-bottom: 15px; position: relative;">
+                    <div style="margin-bottom: 10px; position: relative;">
+                        <input type="text" id="inputStart" placeholder="🔍 Cari titik awal..." autocomplete="off" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                        <div id="suggestStart" class="suggestion-box" style="display:none; position: absolute; width: 100%; background: white; border: 1px solid #cbd5e1; z-index: 2000; max-height: 150px; overflow-y: auto; border-radius: 0 0 6px 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></div>
+                    </div>
+                    <div style="position: relative;">
+                        <input type="text" id="inputEnd" placeholder="📍 Cari lokasi tujuan..." autocomplete="off" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                        <div id="suggestEnd" class="suggestion-box" style="display:none; position: absolute; width: 100%; background: white; border: 1px solid #cbd5e1; z-index: 2000; max-height: 150px; overflow-y: auto; border-radius: 0 0 6px 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></div>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <h3 style="font-weight: bold; font-size: 18px; color: #1e293b; display: block; margin-bottom: 0px; margin-top: 0px;">Informasi Rute</h3>
+                    <div class="info-item">
+                        <p id="startText"><strong>Titik awal :</strong> -</p>
+                    </div>
+                    <div class="info-item">
+                        <p id="endText"><strong>Titik tujuan :</strong> -</p>
+                    </div>
+                    <hr style="margin: 15px 0; border: 0; border-top: 3px solid #2563eb;">
+                    <div class="info-item">
+                        <p id="distanceText">Jarak : -</p>
+                    </div>
+                    <div class="info-item">
+                        <p id="timeText">Estimasi waktu : -</p>
+                    </div>
+                </div>
+                
+                <button id="resetBtn" style="margin-top: 20px;">Reset Navigasi</button>
+            </div>
+
+            <div id="sectionDaftar" style="display: none;">
+                <div class="title-centered">
+                    <h2>Daftar Gedung</h2>
+                </div>
+                <div id="listGedungContainer">
+                    </div>
+            </div>
+
+        </div> <div id="map"></div>
+
+    </div> <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
